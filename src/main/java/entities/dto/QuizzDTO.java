@@ -6,6 +6,7 @@ import org.univ_paris8.iut.montreuil.qdev.tp2025.gr03.jeuQuizz.entities.dto.Joue
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class QuizzDTO {
 
@@ -17,4 +18,15 @@ public class QuizzDTO {
         this.listeJoueurs = listeJoueurs;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        QuizzDTO quizzDTO = (QuizzDTO) o;
+        return Objects.equals(listeQuestionnaires, quizzDTO.listeQuestionnaires) && Objects.equals(listeJoueurs, quizzDTO.listeJoueurs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(listeQuestionnaires, listeJoueurs);
+    }
 }
